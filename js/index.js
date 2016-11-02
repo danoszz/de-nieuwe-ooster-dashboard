@@ -3,6 +3,7 @@
 //1. Jquery toggle zichtbaar maken
 //2. height + width van canvas fixen
 //3. Transition animation bekijken
+//4. Spatie na voornamen weghalen
 
 
 $('.toggle-sidebar').on('click', function () {
@@ -38,7 +39,7 @@ RadialPlacement = function() {
     "y": 0
   };
 
-  start = -120;
+  start = 0;
   current = start;
   radialLocation = function(center, angle, radius) {
     var x, y;
@@ -238,7 +239,7 @@ Network = function() {
     return node.each(function(d) {
       var element, match;
       element = d3.select(this);
-      match = d.voornaam.toLowerCase().search(searchRegEx);
+      match = d.voornamen.toLowerCase().search(searchRegEx);
       if (searchTerm.length > 0 && match >= 0) {
         element.style("fill", "#F38630").style("stroke-width", 2.0).style("stroke", "#555");
         return d.searched = true;
@@ -459,7 +460,7 @@ Network = function() {
   };
   showDetails = function(d, i) {
     var content;
-    content = '<p class="main">' + d.voornaam + d.achternaam + '</span></p>';
+    content = '<p class="main">' + d.voornamen + ' ' + d.achternaam + '</span></p>';
     content += '<hr class="tooltip-hr">';
     content += '<p class="main">' + d.status + '</span></p>';
     tooltip.showTooltip(content, d3.event);
