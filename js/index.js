@@ -1,10 +1,17 @@
- $('.toggle-sidebar').on('click', function () {
+//To Do
+//
+//1. Jquery toggle zichtbaar maken
+//2. height + width van canvas fixen
+//3. Transition animation bekijken
+
+
+$('.toggle-sidebar').on('click', function () {
    $(this).toggleClass('toggleActive');
         $('.container-sidebar').toggleClass('menuActive');
     });
 
 
-// Code from demo
+// D3 Code
 
 
 var Network, RadialPlacement, activate, root;
@@ -12,7 +19,17 @@ var Network, RadialPlacement, activate, root;
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
 RadialPlacement = function() {
-  var center, current, increment, place, placement, radialLocation, radius, setKeys, start, values;
+  var center,
+      current,
+      increment,
+      place,
+      placement,
+      radialLocation,
+      radius,
+      setKeys,
+      start,
+      values;
+
   values = d3.map();
   increment = 20;
   radius = 200;
@@ -20,6 +37,7 @@ RadialPlacement = function() {
     "x": 0,
     "y": 0
   };
+
   start = -120;
   current = start;
   radialLocation = function(center, angle, radius) {
@@ -105,7 +123,45 @@ RadialPlacement = function() {
 
 Network = function() {
 
-  var allData, charge, curLinksData, curNodesData, filter, filterLinks, filterNodes, force, forceTick, groupCenters, height, hideDetails, layout, link, linkedByIndex, linksG, mapNodes, moveToRadialLayout, neighboring, network, node, nodeColors, nodeCounts, nodesG, radialTick, setFilter, setLayout, setSort, setupData, showDetails, sort, sortedArtists, strokeFor, tooltip, update, updateCenters, updateLinks, updateNodes, width;
+  var allData,
+      charge,
+      curLinksData,
+      curNodesData,
+      filter,
+      filterLinks,
+      filterNodes,
+      force,
+      forceTick,
+      groupCenters,
+      height,
+      hideDetails,
+      layout,
+      link,
+      linkedByIndex,
+      linksG,
+      mapNodes,
+      moveToRadialLayout,
+      neighboring,
+      network,
+      node,
+      nodeColors,
+      nodeCounts,
+      nodesG,
+      radialTick,
+      setFilter,
+      setLayout,
+      setSort,
+      setupData,
+      showDetails,
+      sort,
+      sortedArtists,
+      strokeFor,
+      tooltip,
+      update,
+      updateCenters,
+      updateLinks,
+      updateNodes,
+      width;
   width = 960;
   height = 700;
   allData = [];
@@ -182,14 +238,14 @@ Network = function() {
     return node.each(function(d) {
       var element, match;
       element = d3.select(this);
-      match = d.name.toLowerCase().search(searchRegEx);
+      match = d.voornaam.toLowerCase().search(searchRegEx);
       if (searchTerm.length > 0 && match >= 0) {
         element.style("fill", "#F38630").style("stroke-width", 2.0).style("stroke", "#555");
         return d.searched = true;
       } else {
         d.searched = false;
         return element.style("fill", function(d) {
-          return nodeColors(d.artist);
+          return nodeColors(d.status);
         }).style("stroke-width", 1.0);
       }
     });
@@ -203,14 +259,14 @@ Network = function() {
   setupData = function(data) {
     var circleRadius, countExtent, nodesMap;
     countExtent = d3.extent(data.nodes, function(d) {
-      return d.playcount;
+      return d.leeftijd;
     });
     circleRadius = d3.scale.sqrt().range([3, 12]).domain(countExtent);
     data.nodes.forEach(function(n) {
       var randomnumber;
       n.x = randomnumber = Math.floor(Math.random() * width);
       n.y = randomnumber = Math.floor(Math.random() * height);
-      return n.radius = circleRadius(n.playcount);
+      return n.radius = circleRadius(n.leeftijd);
     });
     nodesMap = mapNodes(data.nodes);
     data.links.forEach(function(l) {
@@ -248,14 +304,14 @@ Network = function() {
     filteredNodes = allNodes;
     if (filter === "popular" || filter === "obscure") {
       playcounts = allNodes.map(function(d) {
-        return d.playcount;
+        return d.leeftijd;
       }).sort(d3.ascending);
       cutoff = d3.quantile(playcounts, 0.5);
       filteredNodes = allNodes.filter(function(n) {
         if (filter === "popular") {
-          return n.playcount > cutoff;
+          return n.leeftijd > cutoff;
         } else if (filter === "obscure") {
-          return n.playcount <= cutoff;
+          return n.leeftijd <= cutoff;
         }
       });
     }
@@ -323,7 +379,7 @@ Network = function() {
     }).attr("r", function(d) {
       return d.radius;
     }).style("fill", function(d) {
-      return nodeColors(d.artist);
+      return nodeColors(d.status);
     }).style("stroke", function(d) {
       return strokeFor(d);
     }).style("stroke-width", 1.0);
@@ -393,19 +449,19 @@ Network = function() {
     k = alpha * 0.1;
     return function(d) {
       var centerNode;
-      centerNode = groupCenters(d.artist);
+      centerNode = groupCenters(d.status);
       d.x += (centerNode.x - d.x) * k;
       return d.y += (centerNode.y - d.y) * k;
     };
   };
   strokeFor = function(d) {
-    return d3.rgb(nodeColors(d.artist)).darker().toString();
+    return d3.rgb(nodeColors(d.status)).darker().toString();
   };
   showDetails = function(d, i) {
     var content;
-    content = '<p class="main">' + d.name + d.achternaam + '</span></p>';
+    content = '<p class="main">' + d.voornaam + d.achternaam + '</span></p>';
     content += '<hr class="tooltip-hr">';
-    content += '<p class="main">' + d.artist + '</span></p>';
+    content += '<p class="main">' + d.status + '</span></p>';
     tooltip.showTooltip(content, d3.event);
     if (link) {
       link.attr("stroke", function(l) {
