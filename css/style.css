@@ -20,7 +20,7 @@ body {
     height: 100%;
 }
 .container-main {
-    width: 70%;
+    width: calc(100% - 18rem);
 }
 .container-main h1 {
     position: absolute;
@@ -199,6 +199,14 @@ footer p {
     text-align: center;
 }
 
+/* ---------------- */
+/* D3 Visualisation */
+/* ---------------- */
+
+svg:not(:root) {
+    overflow: visible;
+}
+
 /* Tooltip */
 
 .tooltip {
@@ -220,6 +228,7 @@ footer p {
     margin: 0;
     font-size: 1em;
 }
+/* Naam */
 .tooltip p.main:first-child {
     font-family: "Teko", sans-serif;
     text-transform: uppercase;
@@ -227,6 +236,14 @@ footer p {
     color: #FCA311;
     font-size: 1.5em;
 }
+/* Leeftijd */
+.tooltip p.main:nth-child(2) {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: red;
+    font-size: 1em;
+}
+/* Status */
 hr.tooltip-hr {
     opacity: 0;
 }
