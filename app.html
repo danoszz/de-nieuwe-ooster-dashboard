@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Nieuwe Ooster: Dashboard</title>
+
+    <link href="//fonts.googleapis.com/css?family=Teko" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container container-main">
+       <h1>Verbanden tussen WO-II slachtoffers gelegen op De Nieuwe Ooster</h1>
+        <div class="visualisation">
+
+        </div>
+    </div>
+    <div class="container-sidebar">
+<!--        <h2>Filter</h2>-->
+        <p>Selecteer een filter om verbanden tussen oorlogsslachtoffers te ontdekken.
+        </p>
+        <!--
+        <div class="filters">
+            <button>Geboortedatum</button>
+            <button>Sterftedatum</button>
+            <button>Doodsoorzaak</button>
+            <button>Beroep</button>
+        </div>
+-->
+        <select id="song_select">
+            <option value="call_me_al.json">Demo Selector #1</option>
+            <option value="sledgehammer_2_rounds.json">Demo Selector #2</option>
+            <option value="poker_face.json">Demo Selector #3</option>
+            <option value="jolene.json">Demo Selector #4</option>
+            <option value="helplessness_blues.json">Demo Selector #5</option>
+            <option value="she_said.json">Demo Selector #6</option>
+            <option value="short_skirt.json">Demo Selector #7</option>
+        </select>
+        <div id="controls">
+            <div id="layouts" class="control">
+                <h3>Layout</h3>
+                <a id="force" class="active">Demo Form #1</a>
+                <a id="radial">Demo Form #2</a>
+            </div>
+            <div id="filters" class="control">
+                <h3>Filter</h3>
+                <a id="all" class="active">All</a>
+                <a id="popular">Demo Filter #1</a>
+                <a id="obscure">Demo Filter #2</a>
+            </div>
+            <div id="sorts" class="control">
+                <h3>Sort</h3>
+                <a id="songs" class="active">Demo Filter #3</a>
+                <a id="links">Demo Filter #4</a>
+            </div>
+            <!--
+      <div id="search_section" class="control">
+        <form id="search_form" action=""  method="post">
+          <p class="search_title">Search <input type="text" class="text-input" id="search" value="" /></p>
+        </form>
+      </div>
+-->
+        </div>
+        <div class="toggle-sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        <script src="//d3js.org/d3.v3.min.js"></script>
+        <script src="js/tooltip.js"></script>
+        <script src="js/fisheye.js"></script>
+        <script src="js/index.js"></script>
+
+</body>
+
+</html>
