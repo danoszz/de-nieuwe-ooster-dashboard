@@ -1,0 +1,19 @@
+{
+  "name": "de-nieuwe-ooster-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danoszz/de-nieuwe-ooster-dashboard.git"
+  },
+  "author": "Daan van der Zwaan, Suus ter Voorden, Pim Jenniskens, Merlijn Vos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danoszz/de-nieuwe-ooster-dashboard/issues"
+  },
+  "homepage": "https://github.com/danoszz/de-nieuwe-ooster-dashboard#readme"
+}
